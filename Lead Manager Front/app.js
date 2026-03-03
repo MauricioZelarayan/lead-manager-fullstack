@@ -115,14 +115,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target.classList.contains('btn-delete')) {
             const id = e.target.getAttribute('data-id');
             const row = e.target.closest('tr');
-            row.style.opacity = '0.5';
-            try {
-                await LeadService.delete(id);
-                row.remove();
-            } catch (error) {
-                showError(error.message);
-                row.style.opacity = '1';
+            const name = row.cells[0].textContent;
+
+            // Confirmation logic
+            const confirmed = confirm(`¿Estás seguro de que quieres eliminar al lead "${name}"?`);
+            
+            if (confirmed) {
+                row.style.opacity = '0.5';
+                try {
+                    await LeadService.delete(id);
+                    row.remove();
+                } catch (error) {
+                    showError(error.message);
+                    row.style.opacity = '1';
+                }
             }
+            // ------------------------------------
         }
     });
 

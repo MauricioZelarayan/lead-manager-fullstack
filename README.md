@@ -46,3 +46,7 @@ This project follows a **Layered Architecture** pattern:
 
 3. **Database**:
    - Access the H2 console at `http://localhost:8080/h2-console` to view the `leads` table.
+
+## 📄 License
+
+Copyright (c) 2026 Mauricio Zelarayán. This project is licensed under the MIT License - see the LICENSE file for details.
